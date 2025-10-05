@@ -74,7 +74,7 @@
                 Jumlah Pegawai
             </h3>
             <div class="bg-white rounded-lg h-48 flex items-center justify-center">
-                <canvas id="pegawaiChart">{{$totals}}</canvas>
+                <!-- <canvas id="pegawaiChart">{{$totals}}</canvas> --> 
             </div>
         </div>
 
@@ -90,34 +90,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const ctx = document.getElementById('pegawaiChart').getContext('2d');
-    const pegawaiChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'Jumlah Pegawai',
-                data: [],
-                backgroundColor: ['rgba(54, 162, 235, 0.7)'],
-                borderWidth: 1
-            }]
-        }
-    });
-
-    // async function fetchPegawaiData() {
-    //     const response = await fetch('/api/employees/count');
-    //     const data = await response.json();
-
-    //     pegawaiChart.data.labels = data.labels;
-    //     pegawaiChart.data.datasets[0].data = data.values;
-    //     pegawaiChart.update();
-    // }
-
-    fetchPegawaiData();
-</script>
 @endsection

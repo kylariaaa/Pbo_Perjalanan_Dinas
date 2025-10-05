@@ -14,7 +14,7 @@ class pegawaiSeed extends Seeder
     public function run(): void
     {
         $faker = Faker::create('id_ID');
-         DB::table("pegawai")->insert([
+        DB::table("pegawai")->insert([
                 'no_induk' => $faker->unique()->numberBetween(1000000, 2000000),
                 'nama' => $faker->name,
                 'email'=> $faker->email,

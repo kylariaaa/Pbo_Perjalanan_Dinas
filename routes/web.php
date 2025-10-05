@@ -9,6 +9,7 @@ use App\Http\Controllers\admin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\chartController;
+use App\Models\pegawai;
 
 // Root route
 Route::get('/', function () {
@@ -24,6 +25,12 @@ Route::post('/logout', [AuthController::class, 'Logout'])->name('logout.process'
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [admin::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard', [chartController::class, 'chartByRole'])->name('admin.dashboard');
+
+    // Route::get ('/dashboard', function () {
+    //     $jumlahpegawai = pegawai::count();
+    //     return view('admin.dahsboard', compact('jumlahpegawai'));
+    // });
+
     Route::resource('/admin/pegawai', PegawaiController::class)->names('admin.pegawai');
     Route::resource('/admin/catatandinas', CatatanDinasController::class)->names('admin.catatan');
     Route::put('/admin/catatandinas/{id}/approved', [CatatanDinasController::class, 'Disetujui'])->name('admin.catatan.approved');
